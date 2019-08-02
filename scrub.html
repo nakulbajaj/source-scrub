@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="scrub.js"></script>
+
+    <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		<title>Source Scruber</title>
+	</head>
+
+	<body>
+		<div class="py-5 text-center">
+			<h2> Source Scruber </h2>
+			<p class="lead">
+				This is a tool to remove personal information from source code or other text.
+			</p>
+		</div>
+
+		<div class="container">
+			<div class="row mx-auto">
+				<p>
+					Input the text from which you would like personal information removed into the <u>Source Code</u> box below, and then any personal information you would like to have removed. You can read more about how the tool works (and why you can trust it) at the bottom of the page.
+				</p>
+			</div>
+			<div class="form-group row">
+				<label for="sourceInput" class="col-sm-2 col-form-label">Source Code</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" id="sourceInput"
+									placeholder="Input the source code here."
+									rows=7>
+					</textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="name" class="col-sm-2 col-form-label">
+					Name
+				</label>
+				<div class="col-sm-10">
+					<input id="name" type="text" class="form-control" placeholder="John A. Doe">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="email" class="col-sm-2 col-form-label">
+					Email
+				</label>
+				<div class="col-sm-10">
+					<input id="email"  type="email" class="form-control" placeholder="name@example.com">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="address" class="col-sm-2 col-form-label">
+					Address
+				</label>
+				<div class="col-sm-10">
+					<input id="address" type="text" class="form-control" placeholder="123 Main St New York, NY 12345">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="ssn" class="col-sm-2 col-form-label">
+					SSN
+				</label>
+				<div class="col-sm-10">
+					<input id="ssn" type="text" class="form-control" placeholder="123-45-6789">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="piiInput" class="col-sm-2 col-form-label">
+					Other Personal Information
+				</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" id="piiInput"></textarea>
+					<small id="piiHelpBlock" class="form-text text-muted">
+						Other personal information to search for and redact from the source code.
+					</small>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<button id='run' type='button' class='btn btn-primary btn-block' onclick="scrub()">Scrub</button>
+			</div>
+
+			<div class="row py-5">
+				<div class="col-sm-10">
+					<textarea id="output" class="form-control" rows=10 readonly='true'> </textarea>
+				</div>
+				<div class="col-sm-2">
+					<button id='copy' type='button' class='btn btn-outline-primary btn-small' onclick='copyToClipboard()'>
+						Copy to Clipboard
+					</button>
+				</div>
+			</div>
+
+			<div class="row mx-auto">
+				<p>
+					We are not storing anything you enter into this tool, including your personal information. In fact, the tool runs entirely client side, in your web browser, meaning none of the information is being sent to a server or leaving your browser in any way.
+					This tool is hosted with github pages, from the open source repository found here: {URL}. 
+				</p>
+			</div>
+		</div>
+
+	</body>
+</html>

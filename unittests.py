@@ -4,7 +4,7 @@ from scrub import scrub_word, scrub_multi_word, scrub_whole_word
 
 REDACTED = '$$$$$'
 SOURCE = 'John Doe'
-
+CHARS = !   *   '   (   )   ;   :   @   &   =   +   $   ,   /   ?   #   [   ]
 
 class ScrubWordTests(unittest.TestCase):
 

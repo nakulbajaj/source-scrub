@@ -49,15 +49,15 @@ function scrub(){
 	var address = document.getElementById('address').value;
 	var ssn = document.getElementById('ssn').value;
 	// Format the ssn into three separate parts
-	pattern = new RegExp('([0-9]{3})([0-9]{2})([0-9]{4})')
-	ssn = ssn.replace(pattern, '$1-$2-$3')
+	pattern = new RegExp('([0-9]{3})([0-9]{2})([0-9]{4})');
+	ssn = ssn.replace(pattern, '$1-$2-$3');
 	var voterID = document.getElementById('voterID').value;
 	var driverID = document.getElementById('driverID').value;
 	source = scrub_multi_word(source, py_name, 'NAME');
 	source = scrub_word(source, email, 'EMAIL');
 	source = scrub_word(source, encodeURI (email), 'EMAIL');
 	source = scrub_multi_word(source, address, 'ADDRESS');
-	source = scrub_multi_word(source, ssn, 'SSN');
+	source = scrub_ignoring_delimiters(source, ssn, 'SSN');
 	source = scrub_multi_word(source, voterID, 'voterID');
 	source = scrub_ignoring_delimiters(source, driverID, 'driverID')
 	for (var keyword of pii) {

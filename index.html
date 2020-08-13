@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="scrub.js"></script>
-
-    <!-- Bootstrap CSS -->
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<script src="scrub.js"></script>
+		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">  
+		<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
 		<title>Personal Data Scrubber</title>
 	</head>
 
 	<body>
 
-
 		<div style="height: 30px; background-color: #163D74">
-
-				<p style="color: #FFFFFF; font-weight:200; vertical-align: middle; margin:0px; text-align: center; padding-top: 3px"> <img src="https://brand.umich.edu/assets/brand/style-guide/logo-guidelines/Block_M-Hex.png" height="15px" style="padding-right: 10px;"> A project by the University of Michigan Computer Science and Engineering Department </p>
-
+			<p style="color: #FFFFFF; font-weight:200; vertical-align: middle; margin:0px; text-align: center; padding-top: 3px"> <img src="https://brand.umich.edu/assets/brand/style-guide/logo-guidelines/Block_M-Hex.png" height="15px" style="padding-right: 10px;"> A project by the University of Michigan Computer Science and Engineering Department </p>
 		</div>
 
 		<style type="text/css">
-   			body {background-color: #FFCB05; color: #0f2951 !important; font-family: 'Public Sans', sans-serif; .btn-primary {background-color: #163d74;}} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+			body {background-color: #FFCB05; color: #0f2951 !important; font-family: 'Public Sans', sans-serif; .btn-primary {background-color: #163d74;}} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 		</style>
 
 		<div class="py-5 text-center">
@@ -33,6 +29,7 @@
 		</div>
 
 		<div class="container">
+
 			<div class="row mx-auto">
 				<p style="text-align: center; font-size: 18px; font-weight: 600">
 					Upload your .har file and enter any personal information you entered while registering to vote. Not all fields are expected to be filled. You can read more about how this tool works (and why you can trust it) at the bottom of the page.
@@ -40,25 +37,26 @@
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Source Code</label>
-  				<div class="col-sm-10 custom-file">
-    				<input id="sourceInput" type="file" class="form-control custom-file-input" onchange="reset()">
-    				<label id="sourceFilename" class="custom-file-label" >No file selected</label>
-  				</div>
-  			</div>
+				<label class="col-sm-2 col-form-label">HAR file</label>
+				<div class="col-sm-10 custom-file">
+					<input id="sourceInput" type="file" class="form-control custom-file-input" onchange="reset()">
+					<label id="sourceFilename" class="custom-file-label" >No file selected</label>
+				</div>
+			</div>
 
-       <script>
-            $('#sourceInput').on('change',function(){
-                //get the file name
-                var fileName = $(this).val();
-                //replace the "Choose a file" label
-                $(this).next('.custom-file-label').html(fileName);
-            })
-        </script>
+			<!-- Fix this -->
+			<script>
+				$('#sourceInput').on('change',function(){
+				    //get the file name
+				    var fileName = $(this).val();
+				    //replace the "Choose a file" label
+				    $(this).next('.custom-file-label').html(fileName);
+				})
+			</script>
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-					Name
+				Name
 				</label>
 				<div class="col-sm-4">
 					<input id="first_name" type="text" class="form-control" placeholder="First" onchange="reset()">
@@ -73,7 +71,7 @@
 
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">
-					Email
+				Email
 				</label>
 				<div class="col-sm-10">
 					<input id="email"  type="email" class="form-control" placeholder="name@example.com" onchange="reset()">
@@ -82,16 +80,13 @@
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-					Address
+				Address
 				</label>
 				<div class="col-sm-5">
 					<input id="street_address" type="text" class="form-control" placeholder="Street" onchange="reset()">
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-3">
 					<input id="city_address" type="text" class="form-control" placeholder="City" onchange="reset()">
-				</div>
-				<div class="col-sm-1">
-					<input id="state_address" type="text" class="form-control" placeholder="State" onchange="reset()">
 				</div>
 				<div class="col-sm-2">
 					<input id="zip_address" type="text" class="form-control" placeholder="Zip" onchange="reset()">
@@ -100,7 +95,7 @@
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-					Phone
+				Phone
 				</label>
 				<div class="col-sm-3">
 					<input id="areacode_phone" type="text" class="form-control" placeholder="123" onchange="reset()">
@@ -115,7 +110,7 @@
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-					DOB
+				DOB
 				</label>
 				<div class="col-sm-3">
 					<input id="month_dob" type="text" class="form-control" placeholder="MM" onchange="reset()">
@@ -130,7 +125,7 @@
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-					SSN
+				SSN
 				</label>
 				<div class="col-sm-3">
 					<input id="areanumber_ssn" type="text" class="form-control" placeholder="123" onchange="reset()">
@@ -145,7 +140,7 @@
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-					Driver's License #
+				Driver's License #
 				</label>
 				<div class="col-sm-10">
 					<input id="driverID" type="text" class="form-control" placeholder="Z987654321" onchange="reset()">
@@ -154,7 +149,7 @@
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-					Voter ID #
+				Voter ID #
 				</label>
 				<div class="col-sm-10">
 					<input id="voterID" type="text" class="form-control" placeholder="A123456789" onchange="reset()">
@@ -163,27 +158,28 @@
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-					Other Personal Information
+				Other Personal Information
 				</label>
 				<div class="col-sm-10">
 					<textarea class="form-control" id="piiInput" onchange="reset()"></textarea>
 					<small id="piiHelpBlock" class="form-text text-muted" style="color: #666666 !important;">
-						Other personal information to search for and redact from the source code.
+					Other personal information to search for and redact from the .har file.
 					</small>
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<button id='scrubButton' type='button' class='btn btn-light btn-block' disabled='true' style="display: none;" onclick="scrub()">Upload File</button>				
+				<button id='scrubButton' type='button' class='btn btn-light btn-block' disabled='true' style="display: none; background-color: #163D74 !important" onclick="scrub()">Upload File</button>				
 			</div>
-
 			<div class="row mx-auto">
 				<p>
 					We are not storing anything you enter into this tool, including your personal information. In fact, the tool runs entirely client side, in your web browser, meaning none of the information is being sent to a server or leaving your browser in any way.
-					This tool is hosted with GitHub Pages, from the open source repository found here: <a href='https://github.com/nakulbajaj/source-scrub/'> https://github.com/nakulbajaj/source-scrub/</a>. 
+					This tool is hosted with GitHub Pages, from the open source repository found here: <a href='https://github.com/nakulbajaj/source-scrub/' style="color: #163D74"> https://github.com/nakulbajaj/source-scrub/</a>. 
 				</p>
 			</div>
+
 		</div>
 
 	</body>
+
 </html>

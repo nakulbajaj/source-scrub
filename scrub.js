@@ -111,7 +111,8 @@ function reset(){
 			scrubButton.classList.replace("btn-success", "btn-primary");
 		}
 		scrubButton.disabled = false;
-		scrubButton.innerText = "Scrub"
+		scrubButton.innerText = "Scrub";
+		scrubButton.style.display = 'block';
 	} else {
 		if(scrubButton.classList.contains("btn-primary")){
 			scrubButton.classList.replace("btn-primary", "btn-light");
@@ -120,5 +121,6 @@ function reset(){
 		}
 		scrubButton.disabled = true;
 		scrubButton.innerText = "Upload File"
+		scrubButton.style.display = 'none';
 	}	
 }

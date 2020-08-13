@@ -10,30 +10,40 @@
 
     <!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-		<title>Source Scrubber</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">  
+		<title>Personal Data Scrubber</title>
 	</head>
 
 	<body>
+
+
+		<div style="height: 30px; background-color: #163D74">
+
+				<p style="color: #FFFFFF; font-weight:200; vertical-align: middle; margin:0px; text-align: center; padding-top: 3px"> <img src="https://brand.umich.edu/assets/brand/style-guide/logo-guidelines/Block_M-Hex.png" height="15px" style="padding-right: 10px;"> A project by the University of Michigan Computer Science and Engineering Department </p>
+
+		</div>
+
+		<style type="text/css">
+   			body {background-color: #FFCB05; color: #0f2951 !important; font-family: 'Public Sans', sans-serif; .btn-primary {background-color: #163d74;}} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+		</style>
+
 		<div class="py-5 text-center">
-			<h2> Source Scrubber </h2>
-			<p class="lead">
-				This is a tool to remove personal information from source code or other text.
-			</p>
+			<h2 style="font-weight:400;"> Personal Data Scrubber </h2>
+			<h4 style="font-weight:200;"> Online Voter Registration Project</h4>
 		</div>
 
 		<div class="container">
 			<div class="row mx-auto">
-				<p>
-					Input the text from which you would like personal information removed into the <u>Source Code</u> box below, and then any personal information you would like to have removed. You can read more about how the tool works (and why you can trust it) at the bottom of the page.
+				<p style="text-align: center; font-size: 18px; font-weight: 600">
+					Upload your .har file and enter any personal information you entered while registering to vote. Not all fields are expected to be filled. You can read more about how this tool works (and why you can trust it) at the bottom of the page.
 				</p>
 			</div>
 
 			<div class="form-group row">
-				<label for="sourceInput" class="col-sm-2 col-form-label">Source Code</label>
+				<label class="col-sm-2 col-form-label">Source Code</label>
   				<div class="col-sm-10 custom-file">
     				<input id="sourceInput" type="file" class="form-control custom-file-input" onchange="reset()">
-    				<label id="sourceFilename" class="custom-file-label" for="customFile">Choose file</label>
+    				<label id="sourceFilename" class="custom-file-label" >No file selected</label>
   				</div>
   			</div>
 
@@ -47,16 +57,22 @@
         </script>
 
 			<div class="form-group row">
-				<label for="name" class="col-sm-2 col-form-label">
+				<label  class="col-sm-2 col-form-label">
 					Name
 				</label>
-				<div class="col-sm-10">
-					<input id="name" type="text" class="form-control" placeholder="John A. Doe" onchange="reset()">
+				<div class="col-sm-4">
+					<input id="first_name" type="text" class="form-control" placeholder="First" onchange="reset()">
+				</div>
+				<div class="col-sm-2">
+					<input id="middle_name" type="text" class="form-control" placeholder="Middle" onchange="reset()">
+				</div>
+				<div class="col-sm-4">
+					<input id="last_name" type="text" class="form-control" placeholder="Last" onchange="reset()">
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="email" class="col-sm-2 col-form-label">
+				<label class="col-sm-2 col-form-label">
 					Email
 				</label>
 				<div class="col-sm-10">
@@ -65,61 +81,106 @@
 			</div>
 
 			<div class="form-group row">
-				<label for="address" class="col-sm-2 col-form-label">
+				<label  class="col-sm-2 col-form-label">
 					Address
 				</label>
-				<div class="col-sm-10">
-					<input id="address" type="text" class="form-control" placeholder="123 Main St New York, NY 12345" onchange="reset()">
+				<div class="col-sm-5">
+					<input id="street_address" type="text" class="form-control" placeholder="Street" onchange="reset()">
+				</div>
+				<div class="col-sm-2">
+					<input id="city_address" type="text" class="form-control" placeholder="City" onchange="reset()">
+				</div>
+				<div class="col-sm-1">
+					<input id="state_address" type="text" class="form-control" placeholder="State" onchange="reset()">
+				</div>
+				<div class="col-sm-2">
+					<input id="zip_address" type="text" class="form-control" placeholder="Zip" onchange="reset()">
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="ssn" class="col-sm-2 col-form-label">
+				<label  class="col-sm-2 col-form-label">
+					Phone
+				</label>
+				<div class="col-sm-3">
+					<input id="areacode_phone" type="text" class="form-control" placeholder="123" onchange="reset()">
+				</div>
+				<div class="col-sm-3">
+					<input id="centraloffice_phone" type="text" class="form-control" placeholder="456" onchange="reset()">
+				</div>
+				<div class="col-sm-4">
+					<input id="subscribernumber_phone" type="text" class="form-control" placeholder="7890" onchange="reset()">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label  class="col-sm-2 col-form-label">
+					DOB
+				</label>
+				<div class="col-sm-3">
+					<input id="month_dob" type="text" class="form-control" placeholder="MM" onchange="reset()">
+				</div>
+				<div class="col-sm-3">
+					<input id="day_dob" type="text" class="form-control" placeholder="DD" onchange="reset()">
+				</div>
+				<div class="col-sm-4">
+					<input id="year_dob" type="text" class="form-control" placeholder="YYYY" onchange="reset()">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label  class="col-sm-2 col-form-label">
 					SSN
 				</label>
-				<div class="col-sm-10">
-					<input id="ssn" type="text" class="form-control" placeholder="123-45-6789" onchange="reset()">
+				<div class="col-sm-3">
+					<input id="areanumber_ssn" type="text" class="form-control" placeholder="123" onchange="reset()">
+				</div>
+				<div class="col-sm-3">
+					<input id="groupnumber_ssn" type="text" class="form-control" placeholder="45" onchange="reset()">
+				</div>
+				<div class="col-sm-4">
+					<input id="serialnumber_ssn" type="text" class="form-control" placeholder="6789" onchange="reset()">
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="driverID" class="col-sm-2 col-form-label">
-					Driver's License Number
+				<label  class="col-sm-2 col-form-label">
+					Driver's License #
 				</label>
 				<div class="col-sm-10">
-					<input id="driverID" type="text" class="form-control" onchange="reset()">
+					<input id="driverID" type="text" class="form-control" placeholder="Z987654321" onchange="reset()">
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="ssn" class="col-sm-2 col-form-label">
-					Voter ID
+				<label  class="col-sm-2 col-form-label">
+					Voter ID #
 				</label>
 				<div class="col-sm-10">
-					<input id="voterID" type="text" class="form-control" onchange="reset()">
+					<input id="voterID" type="text" class="form-control" placeholder="A123456789" onchange="reset()">
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="piiInput" class="col-sm-2 col-form-label">
+				<label  class="col-sm-2 col-form-label">
 					Other Personal Information
 				</label>
 				<div class="col-sm-10">
 					<textarea class="form-control" id="piiInput" onchange="reset()"></textarea>
-					<small id="piiHelpBlock" class="form-text text-muted">
+					<small id="piiHelpBlock" class="form-text text-muted" style="color: #666666 !important;">
 						Other personal information to search for and redact from the source code.
 					</small>
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<button id='scrubButton' type='button' class='btn btn-light btn-block' disabled='true' onclick="scrub()">Upload File</button>				
+				<button id='scrubButton' type='button' class='btn btn-light btn-block' disabled='true' style="display: none;" onclick="scrub()">Upload File</button>				
 			</div>
 
 			<div class="row mx-auto">
 				<p>
 					We are not storing anything you enter into this tool, including your personal information. In fact, the tool runs entirely client side, in your web browser, meaning none of the information is being sent to a server or leaving your browser in any way.
-					This tool is hosted with GitHub Pages, from the open source repository found here: <a href='https://github.com/changkm/source-scrub/'> https://github.com/changkm/source-scrub/</a>. 
+					This tool is hosted with GitHub Pages, from the open source repository found here: <a href='https://github.com/nakulbajaj/source-scrub/'> https://github.com/nakulbajaj/source-scrub/</a>. 
 				</p>
 			</div>
 		</div>

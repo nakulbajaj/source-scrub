@@ -28,8 +28,7 @@
 			<h4 style="font-weight:200;"> Online Voter Registration Project</h4>
 		</div>
 
-		<div class="container">
-
+		<div class="container" style="">
 			<div class="row mx-auto">
 				<p style="text-align: center; font-size: 18px; font-weight: 600">
 					Upload your .har file and enter any personal information you entered while registering to vote. Not all fields are expected to be filled. You can read more about how this tool works (and why you can trust it) at the bottom of the page.
@@ -53,7 +52,10 @@
 				    $(this).next('.custom-file-label').html(fileName);
 				})
 			</script>
+		</div>
 
+		<div class="container" style="border-top-style: solid; padding-top: 10px">
+			<legend>Contact Information:</legend>
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
 				Name
@@ -107,6 +109,10 @@
 					<input id="subscribernumber_phone" type="text" class="form-control" placeholder="7890" onchange="reset()">
 				</div>
 			</div>
+		</div>
+
+		<div class="container" style="border-top-style: solid; padding-top: 10px">
+			<legend>Private Identifiers:</legend>
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
@@ -155,6 +161,10 @@
 					<input id="voterID" type="text" class="form-control" placeholder="A123456789" onchange="reset()">
 				</div>
 			</div>
+		</div>
+
+		<div class="container" style="border-top-style: solid; padding-top: 10px">
+			<legend>Miscellaneous:</legend>
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
@@ -167,7 +177,9 @@
 					</small>
 				</div>
 			</div>
+		</div>
 
+		<div class="container" style="padding-bottom: 20px">
 			<div class="form-group row">
 				<button id='scrubButton' type='button' class='btn btn-light btn-block' disabled='true' style="display: none; background-color: #163D74 !important" onclick="scrub()">Upload File</button>				
 			</div>

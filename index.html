@@ -1,3 +1,24 @@
+<!--  
+  * Author: Nakul Bajaj & Kevin Chang
+  * Halderman Lab
+  *
+  * ,,,,,,,,,,,                 ,,,,,,,,,,,
+  * ,,,,,,,,,,,,,             ,,,,,,,,,,,,,
+  * ,,,,,,,,,,,,,,,         ,,,,,,,,,,,,,,,
+  * ,,,,,,,,,,,,,,,,,     ,,,,,,,,,,,,,,,,,
+  *    ,,,,,,,,,,,,,,,, ,,,,,,,,,,,,,,,,   
+  *    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,   
+  *    ,,,,,,,,  ,,,,,,,,,,,,,  ,,,,,,,,   
+  *    ,,,,,,,,    ,,,,,,,,,    ,,,,,,,,   
+  *    ,,,,,,,,      ,,,,,      ,,,,,,,,   
+  * ,,,,,,,,,,,,,,,    ,    ,,,,,,,,,,,,,,,
+  * ,,,,,,,,,,,,,,,         ,,,,,,,,,,,,,,,
+  * ,,,,,,,,,,,,,,,         ,,,,,,,,,,,,,,,
+  * 
+  *   University of Michigan – Est. 1817
+  *
+-->
+
 <!DOCTYPE html>
 <!doctype html>
 <html lang="en">
@@ -42,16 +63,6 @@
 					<label id="sourceFilename" class="custom-file-label" >No file selected</label>
 				</div>
 			</div>
-
-			<!-- Fix this -->
-			<script>
-				$('#sourceInput').on('change',function(){
-				    //get the file name
-				    var fileName = $(this).val();
-				    //replace the "Choose a file" label
-				    $(this).next('.custom-file-label').html(fileName);
-				})
-			</script>
 		</div>
 
 		<div class="container" style="border-top-style: solid; padding-top: 10px">

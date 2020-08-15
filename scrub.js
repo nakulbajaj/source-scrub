@@ -152,8 +152,6 @@
       // Emails: scrub all instances, including as URL and seperately between username and domain
       source = scrub_word(source, email, '*EMAIL*');
       source = scrub_word(source, encodeURI(email), '*EMAIL*');
-      source = scrub_word(source, email.split('@')[0], '*EMAIL_USERNAME*');
-      source = scrub_word(source, email.split('@')[1], '*EMAIL_DOMAIN*');
 
       // Address: scrub while ignoring delimiters (whitespace) in street and city and any zip code references
       source = scrub_ignoring_delimiters(source, street_address, '*STREETADDRESS*');

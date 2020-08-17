@@ -128,12 +128,8 @@
       var centraloffice_phone = document.getElementById('centraloffice_phone').value;
       var subscribernumber_phone = document.getElementById('subscribernumber_phone').value;
 
-      var month_dob = document.getElementById('month_dob').value;
-      var day_dob = document.getElementById('day_dob').value;
       var year_dob = document.getElementById('year_dob').value;
 
-      var areanumber_ssn = document.getElementById('areanumber_ssn').value;
-      var groupnumber_ssn = document.getElementById('groupnumber_ssn').value;
       var serialnumber_ssn = document.getElementById('serialnumber_ssn').value;
 
       var driverID = document.getElementById('driverID').value;
@@ -154,29 +150,24 @@
       source = scrub_word(source, encodeURI(email), '*EMAIL*');
 
       // Address: scrub while ignoring delimiters (whitespace) in street and city and any zip code references
-      source = scrub_ignoring_delimiters(source, street_address, '*STREETADDRESS*');
+      source = scrub_multi_word(source, street_address, '*STREETADDRESS*');
       source = scrub_ignoring_delimiters(source, city_address, '*CITYADDRESS*');
       source = scrub_whole_number(source, zip_address, '*ZIPADDRESS*');
 
       // Phone: scrub each section of phone number and the phone number in full with delimiters included
+      // TODO: Find out if "full phone scrubbing" is good enough
       source = scrub_whole_number(source, areacode_phone, '*AREACODEPHONE*');
       source = scrub_whole_number(source, centraloffice_phone, '*CENTRALOFFICEPHONE*');
       source = scrub_whole_number(source, subscribernumber_phone, '*SUBSCRIBERNUMBERPHONE*');
-      source = scrub_ignoring_delimiters(source, areacode_phone + "-" + centraloffice_phone + "-" + subscribernumber_phone, '*FULLPHONENUMBER*');
+      if(areacode_phone != "" || centraloffice_phone != "" || subscribernumber_phone != ""){
+        source = scrub_ignoring_delimiters(source, areacode_phone + "-" + centraloffice_phone + "-" + subscribernumber_phone, '*FULLPHONENUMBER*');
+      }
 
-      // DOB: scrub all instances of month, day, and year numbers along while stripping leading zeroes
-      // TODO: Is month and day filtering necessary?
-      source = scrub_whole_number(source, month_dob, '*MONTHDOB*');
-      source = scrub_whole_number(source, month_dob - 0, '*MONTHDOB*');
-      source = scrub_whole_number(source, day_dob, '*DAYDOB*');
-      source = scrub_whole_number(source, day_dob - 0, '*DAYDOB*');
+      // DOB: scrub all instances of year numbers
       source = scrub_whole_number(source, year_dob, '*YEARDOB*');
 
-      // SSN: scrub each section of SSN and the SSN in full with delimiters included
-      source = scrub_whole_number(source, areanumber_ssn, '*AREANUMBERSSN*');
-      source = scrub_whole_number(source, groupnumber_ssn, '*GROUPNUMBERSSN*');
-      source = scrub_whole_number(source, serialnumber_ssn, '*SERIALNUMBERSSN*');
-      source = scrub_ignoring_delimiters(source, areanumber_ssn + "-" + groupnumber_ssn + "-" + serialnumber_ssn, '*FULLSSN*');
+      // SSN: Scrub last four of SSN
+      source = scrub_whole_number(source, serialnumber_ssn, '*LASTFOURSSN*');
 
       // DLN: Scrub driver's license number
       source = scrub_word(source, driverID, '*DRIVERID*');

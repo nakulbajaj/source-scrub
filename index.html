@@ -49,12 +49,22 @@
 			<h4 style="font-weight:200;"> Online Voter Registration Project</h4>
 		</div>
 
+		<div class="container" style="padding-top: 10px">
+			<h2><center><b>Commitment to Privacy and Safety (Important)</b></center></h2>
+			<h5><ul style="display: inline-block;">
+				<li>This tool works completely client-side (meaning that your sensitive information never leaves your computer). </li>
+				<li>You are encouraged to temporarily disable your internet connection while using this tool for assurance that no information is sent via the internet.</li>
+				<li>All fields are optional, and should be filled based on whether the information was required while registering to vote.</li>
+				<li>Our source code can be found at <a href='https://github.com/nakulbajaj/source-scrub/' style="color: #163D74"> github.com/nakulbajaj/source-scrub/</a> to further verify the security of this tool.</li>
+			</ul></h5>
+		</div>
+
 		<div class="container" style="">
-			<div class="row mx-auto">
+<!-- 			<div class="row mx-auto">
 				<p style="text-align: center; font-size: 18px; font-weight: 600">
 					Upload your .har file and enter any personal information you entered while registering to vote. Not all fields are expected to be filled. You can read more about how this tool works (and why you can trust it) at the bottom of the page.
 				</p>
-			</div>
+			</div> -->
 
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">HAR file</label>
@@ -127,31 +137,19 @@
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-				DOB
+				Birth Year
 				</label>
-				<div class="col-sm-3">
-					<input id="month_dob" type="text" class="form-control" placeholder="MM" onchange="reset()">
-				</div>
-				<div class="col-sm-3">
-					<input id="day_dob" type="text" class="form-control" placeholder="DD" onchange="reset()">
-				</div>
-				<div class="col-sm-4">
-					<input id="year_dob" type="text" class="form-control" placeholder="YYYY" onchange="reset()">
+				<div class="col-sm-10">
+					<input id="year_dob" type="text" class="form-control" placeholder="1970" onchange="reset()">
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
-				SSN
+				Last 4 SSN
 				</label>
-				<div class="col-sm-3">
-					<input id="areanumber_ssn" type="text" class="form-control" placeholder="123" onchange="reset()">
-				</div>
-				<div class="col-sm-3">
-					<input id="groupnumber_ssn" type="text" class="form-control" placeholder="45" onchange="reset()">
-				</div>
-				<div class="col-sm-4">
-					<input id="serialnumber_ssn" type="text" class="form-control" placeholder="6789" onchange="reset()">
+				<div class="col-sm-10">
+					<input id="serialnumber_ssn" type="text" class="form-control" placeholder="1234" onchange="reset()">
 				</div>
 			</div>
 
@@ -194,12 +192,12 @@
 			<div class="form-group row">
 				<button id='scrubButton' type='button' class='btn btn-light btn-block' disabled='true' style="display: none; background-color: #163D74 !important" onclick="scrub()">Upload File</button>				
 			</div>
-			<div class="row mx-auto">
+<!-- 			<div class="row mx-auto">
 				<p>
 					We are not storing anything you enter into this tool, including your personal information. In fact, the tool runs entirely client side, in your web browser, meaning none of the information is being sent to a server or leaving your browser in any way.
 					This tool is hosted with GitHub Pages, from the open source repository found here: <a href='https://github.com/nakulbajaj/source-scrub/' style="color: #163D74"> https://github.com/nakulbajaj/source-scrub/</a>. 
 				</p>
-			</div>
+			</div> -->
 
 		</div>
 

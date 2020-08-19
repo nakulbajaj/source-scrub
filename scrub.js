@@ -24,6 +24,8 @@
  var downloadReady = false;
  var source;
 
+// changeOutputDisplay('none');
+
  // Word Scrubbing Functions
 
  /* Scrubs all instances of the word from the source.
@@ -156,11 +158,12 @@
 
       // Phone: scrub each section of phone number and the phone number in full with delimiters included
       // TODO: Find out if "full phone scrubbing" is good enough
-      source = scrub_whole_number(source, areacode_phone, '*AREACODEPHONE*');
-      source = scrub_whole_number(source, centraloffice_phone, '*CENTRALOFFICEPHONE*');
-      source = scrub_whole_number(source, subscribernumber_phone, '*SUBSCRIBERNUMBERPHONE*');
-      if(areacode_phone != "" || centraloffice_phone != "" || subscribernumber_phone != ""){
-        source = scrub_ignoring_delimiters(source, areacode_phone + "-" + centraloffice_phone + "-" + subscribernumber_phone, '*FULLPHONENUMBER*');
+      if(centraloffice_phone != "" && subscribernumber_phone != ""){
+        if(areacode_phone != ""){
+          source = scrub_ignoring_delimiters(source, areacode_phone + "-" + centraloffice_phone + "-" + subscribernumber_phone, '*LASTSEVENPHONENUMBER*');
+        } else {
+          source = scrub_ignoring_delimiters(source, centraloffice_phone + "-" + subscribernumber_phone, '*LASTSEVENPHONENUMBER*');
+        }
       }
 
       // DOB: scrub all instances of year numbers
@@ -180,10 +183,17 @@
         source = scrub_multi_word(source, keyword, 'PII');
       }
 
+      var jsonArray = JSON.parse(source);
+      for (entry in jsonArray['log']['entries']){
+        delete jsonArray['log']['entries'][entry].response;
+      }
+
+      document.getElementById('outputText').value = JSON.stringify(jsonArray);
       // After all PII is scrubbed, button can become a "download" button
       document.getElementById('scrubButton').classList.replace('btn-primary', 'btn-success');
       document.getElementById('scrubButton').style.backgroundColor = "";
       document.getElementById('scrubButton').innerText = "Download";
+      changeOutputDisplay('block');
       downloadReady = true;
     }
   };
@@ -198,7 +208,8 @@
   let sourceInput = document.getElementById('sourceInput');
   let scrubButton = document.getElementById('scrubButton');
 
-  // If file has been uploaded, then create download button
+  changeOutputDisplay('none');
+  // If file has been uploaded, then create scrub button
   if (sourceInput.files.length > 0) {
     if (scrubButton.classList.contains("btn-light")) {
       scrubButton.classList.replace("btn-light", "btn-primary");
@@ -219,8 +230,13 @@
       scrubButton.classList.replace("btn-success", "btn-light");
     }
     scrubButton.disabled = true;
-    scrubButton.innerText = "Upload File"
-    scrubButton.style.display = 'none';
-    scrubButton.style.backgroundColor = "";
   }
+ }
+
+ function changeOutputDisplay(state) {
+  document.getElementById('outputContainer').style.display = state;
+  document.getElementById('outputLegend').style.display = state;
+  document.getElementById('outputForm').style.display = state;
+  document.getElementById('outputRow').style.display = state;
+  document.getElementById('outputText').style.display = state;
  }

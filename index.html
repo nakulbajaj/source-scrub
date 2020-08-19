@@ -34,10 +34,10 @@
 		<title>Personal Data Scrubber</title>
 	</head>
 
-	<body>
+	<body onload="changeOutputDisplay('none');">
 
 		<div style="height: 30px; background-color: #163D74">
-			<p style="color: #FFFFFF; font-weight:200; vertical-align: middle; margin:0px; text-align: center; padding-top: 3px"> <img src="https://brand.umich.edu/assets/brand/style-guide/logo-guidelines/Block_M-Hex.png" height="15px" style="padding-right: 10px;"> A project by the University of Michigan Computer Science and Engineering Department </p>
+			<p style="color: #FFFFFF; font-weight:200; vertical-align: middle; margin:0px; text-align: center; padding-top: 3px"> <img src="https://brand.umich.edu/assets/brand/style-guide/logo-guidelines/Block_M-Hex.png" height="15px" style="padding-right: 10px;"> A project by the University of Michigan, <a href='https://www.eecs.umich.edu/security/' style="color: #FFFFFF; text-decoration: underline;"> Center for Computer Security and Society (C2S2) </a></p>
 		</div>
 
 		<style type="text/css">
@@ -45,27 +45,23 @@
 		</style>
 
 		<div class="py-5 text-center">
-			<h2 style="font-weight:400;"> Personal Data Scrubber </h2>
-			<h4 style="font-weight:200;"> Online Voter Registration Project</h4>
+			<h2><b> Personal Data Scrubber </b></h2>
+			<h4> Online Voter Registration Project</h4>
 		</div>
 
-		<div class="container" style="padding-top: 10px">
-			<h2><center><b>Commitment to Privacy and Safety (Important)</b></center></h2>
+		<div class="container">
+			<h3 style="font-weight:400;"><center>Commitment to Privacy and Safety</center></h3>
 			<h5><ul style="display: inline-block;">
-				<li>This tool works completely client-side (meaning that your sensitive information never leaves your computer). </li>
-				<li>You are encouraged to temporarily disable your internet connection while using this tool for assurance that no information is sent via the internet.</li>
-				<li>All fields are optional, and should be filled based on whether the information was required while registering to vote.</li>
-				<li>Our source code can be found at <a href='https://github.com/nakulbajaj/source-scrub/' style="color: #163D74"> github.com/nakulbajaj/source-scrub/</a> to further verify the security of this tool.</li>
-			</ul></h5>
+					<li>This tool works completely client-side (meaning that sensitive information never leaves your computer). </li>
+					<li>It is encouraged to temporarily disable your internet connection while using this tool for assured security.</li>
+					<li>All fields are optional, and should be filled based on whether the information was required while registering to vote.</li>
+					<li>Our source code can be found at <a href='https://github.com/nakulbajaj/source-scrub/' style="color: #163D74"> github.com/nakulbajaj/source-scrub/</a> to further verify the security of this tool.</li>
+				</ul>
+			</h5>
 		</div>
 
-		<div class="container" style="">
-<!-- 			<div class="row mx-auto">
-				<p style="text-align: center; font-size: 18px; font-weight: 600">
-					Upload your .har file and enter any personal information you entered while registering to vote. Not all fields are expected to be filled. You can read more about how this tool works (and why you can trust it) at the bottom of the page.
-				</p>
-			</div> -->
-
+		<div class="container" style="border-top-style: solid; padding-top: 10px">
+			<legend>Original File:</legend>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">HAR file</label>
 				<div class="col-sm-10 custom-file">
@@ -174,7 +170,6 @@
 
 		<div class="container" style="border-top-style: solid; padding-top: 10px">
 			<legend>Miscellaneous:</legend>
-
 			<div class="form-group row">
 				<label  class="col-sm-2 col-form-label">
 				Other Personal Information
@@ -188,17 +183,19 @@
 			</div>
 		</div>
 
-		<div class="container" style="padding-bottom: 20px">
+		<div class="container" style="padding-bottom: 20px;">
 			<div class="form-group row">
-				<button id='scrubButton' type='button' class='btn btn-light btn-block' disabled='true' style="display: none; background-color: #163D74 !important" onclick="scrub()">Upload File</button>				
+				<button id='scrubButton' type='button' class='btn btn-light btn-block' disabled='true' style="display: none;" onclick="scrub()"></button>				
 			</div>
-<!-- 			<div class="row mx-auto">
-				<p>
-					We are not storing anything you enter into this tool, including your personal information. In fact, the tool runs entirely client side, in your web browser, meaning none of the information is being sent to a server or leaving your browser in any way.
-					This tool is hosted with GitHub Pages, from the open source repository found here: <a href='https://github.com/nakulbajaj/source-scrub/' style="color: #163D74"> https://github.com/nakulbajaj/source-scrub/</a>. 
-				</p>
-			</div> -->
+		</div>
 
+		<div id="outputContainer" class="container" style="border-top-style: solid; padding-top: 10px">
+			<legend id="outputLegend">Excerpted Output:</legend>
+			<div id="outputForm" class="form-group row">
+					<div id="outputRow" class="col-sm-12">
+						<textarea id="outputText" class="form-control" rows=10 readonly='true'></textarea>
+					</div>
+			</div>
 		</div>
 
 	</body>

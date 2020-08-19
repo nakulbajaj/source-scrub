@@ -152,9 +152,9 @@
       source = scrub_word(source, encodeURI(email), '*EMAIL*');
 
       // Address: scrub while ignoring delimiters (whitespace) in street and city and any zip code references
-      source = scrub_multi_word(source, street_address, '*STREETADDRESS*');
-      source = scrub_ignoring_delimiters(source, city_address, '*CITYADDRESS*');
-      source = scrub_whole_number(source, zip_address, '*ZIPADDRESS*');
+      source = scrub_ignoring_delimiters(source, street_address, 'STREETADDRESS');
+      source = scrub_ignoring_delimiters(source, city_address, 'CITYADDRESS');
+      source = scrub_whole_number(source, zip_address, 'ZIPADDRESS');
 
       // Phone: scrub each section of phone number and the phone number in full with delimiters included
       // TODO: Find out if "full phone scrubbing" is good enough
@@ -183,12 +183,15 @@
         source = scrub_multi_word(source, keyword, 'PII');
       }
 
+      console.log(source);
       var jsonArray = JSON.parse(source);
       for (entry in jsonArray['log']['entries']){
         delete jsonArray['log']['entries'][entry].response;
       }
 
       document.getElementById('outputText').value = JSON.stringify(jsonArray);
+
+      
       // After all PII is scrubbed, button can become a "download" button
       document.getElementById('scrubButton').classList.replace('btn-primary', 'btn-success');
       document.getElementById('scrubButton').style.backgroundColor = "";

@@ -81,7 +81,7 @@
   }
   word = word.replace(/[\W_]+/gi, '-')
   var chars = word.split('-');
-  var pattern = new RegExp(chars.join('[\W_]*'), 'gi');
+  var pattern = new RegExp(chars.join('[\\W_]*'), 'gi');
   return source.replace(pattern, replacement);
  }
 
@@ -152,15 +152,15 @@
       source = scrub_word(source, encodeURI(email), '*EMAIL*');
 
       // Address: scrub while ignoring delimiters (whitespace) in street and city and any zip code references
-      source = scrub_ignoring_delimiters(source, street_address, 'STREETADDRESS');
-      source = scrub_ignoring_delimiters(source, city_address, 'CITYADDRESS');
-      source = scrub_whole_number(source, zip_address, 'ZIPADDRESS');
+      source = scrub_ignoring_delimiters(source, street_address, '*STREETADDRESS*');
+      source = scrub_ignoring_delimiters(source, city_address, '*CITYADDRESS*');
+      source = scrub_whole_number(source, zip_address, '*ZIPADDRESS*');
 
       // Phone: scrub each section of phone number and the phone number in full with delimiters included
       // TODO: Find out if "full phone scrubbing" is good enough
       if(centraloffice_phone != "" && subscribernumber_phone != ""){
         if(areacode_phone != ""){
-          source = scrub_ignoring_delimiters(source, areacode_phone + "-" + centraloffice_phone + "-" + subscribernumber_phone, '*LASTSEVENPHONENUMBER*');
+          source = scrub_ignoring_delimiters(source, areacode_phone + "-" + centraloffice_phone + "-" + subscribernumber_phone, '*FULLPHONENUMBER*');
         } else {
           source = scrub_ignoring_delimiters(source, centraloffice_phone + "-" + subscribernumber_phone, '*LASTSEVENPHONENUMBER*');
         }
@@ -183,15 +183,23 @@
         source = scrub_multi_word(source, keyword, 'PII');
       }
 
-      console.log(source);
-      var jsonArray = JSON.parse(source);
-      for (entry in jsonArray['log']['entries']){
-        delete jsonArray['log']['entries'][entry].response;
-      }
+      // Delete BLOBs by deleting "content" categories
+      // var outputLog = source.replace(new RegExp(/"content": {.*?},/, 'sg'), "");
+      // document.getElementById('outputText').value = outputLog;
 
-      document.getElementById('outputText').value = JSON.stringify(jsonArray);
+      // Delete BLOBs by deleting "response" categories
+      var outputLog = source.replace(new RegExp(/"response": {.*?},\s*"cache"/, 'sg'), "\"cache\"");
+      document.getElementById('outputText').value = outputLog;
 
-      
+      // Parse and serialize JSON to delete response categories from entries (big ewww)
+      // var jsonArray = JSON.parse(source);
+      // for (entry in jsonArray['log']['entries']){
+      //   delete jsonArray['log']['entries'][entry].response;
+      // }
+      // document.getElementById('outputText').value = JSON.stringify(jsonArray);
+
+
+
       // After all PII is scrubbed, button can become a "download" button
       document.getElementById('scrubButton').classList.replace('btn-primary', 'btn-success');
       document.getElementById('scrubButton').style.backgroundColor = "";
@@ -241,5 +249,6 @@
   document.getElementById('outputLegend').style.display = state;
   document.getElementById('outputForm').style.display = state;
   document.getElementById('outputRow').style.display = state;
+  document.getElementById('outputDescription').style.display = state;
   document.getElementById('outputText').style.display = state;
  }

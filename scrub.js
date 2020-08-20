@@ -150,6 +150,11 @@
       // Emails: scrub all instances, including as URL and seperately between username and domain
       source = scrub_word(source, email, '*EMAIL*');
       source = scrub_word(source, encodeURI(email), '*EMAIL*');
+      if(email.includes("@")){
+        let emailComponents = email.split("@");
+        source = scrub_word(source, emailComponents[0], '*EMAILUSERNAME*');
+        source = scrub_word(source, emailComponents[1], '*EMAILDOMAIN*');
+      }
 
       // Address: scrub while ignoring delimiters (whitespace) in street and city and any zip code references
       source = scrub_ignoring_delimiters(source, street_address, '*STREETADDRESS*');

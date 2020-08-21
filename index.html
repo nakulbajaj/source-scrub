@@ -50,14 +50,9 @@
 		</div>
 
 		<div class="container">
-			<h3 style="font-weight:400;"><center>Commitment to Privacy and Safety</center></h3>
-			<h5><ul style="display: inline-block;">
-					<li>This tool works completely client-side (meaning that sensitive information never leaves your computer). </li>
-					<li>It is encouraged to temporarily disable your internet connection while using this tool for assured security.</li>
-					<li>All fields are optional, and should be filled based on whether the information was required while registering to vote.</li>
-					<li>Our source code can be found at <a href='https://github.com/nakulbajaj/source-scrub/' style="color: #163D74"> github.com/nakulbajaj/source-scrub/</a> to further verify the security of this tool.</li>
-				</ul>
-			</h5>
+			<h5> Why use this tool? <span style="font-weight: 200;"> &nbsp; Your voter registration session likely contains personal information, such as your name, voter ID, and other identifiers that you entered or that appear in your voter record. This tool helps you remove that information from the recorded session file (HAR file) before you send the file to us. </span></h5>
+			<h5> How does the tool work? <span style="font-weight: 200;"> &nbsp; It works by searching for each personal field and replacing it with a placeholder. This tool runs entirely on your computer, and doesn't send any information to us.  All fields are optional, and should be filled based on whether the information was required while registering to vote. </span></h5>
+			<h5> How can I assure my information is safe? <span style="font-weight: 200;"> &nbsp; You are encouraged to turn off your internet connection after loading this tool. This prevents any data from leaving your computer (including from malicious 3rd party malware) while you use this site. You can also choose to search for and delete personal data in the downloaded scrubbed file yourself.</span></h5>
 		</div>
 
 		<div class="container" style="border-top-style: solid; padding-top: 10px">
@@ -177,7 +172,7 @@
 				<div class="col-sm-10">
 					<textarea class="form-control" id="piiInput" onchange="reset()"></textarea>
 					<small id="piiHelpBlock" class="form-text text-muted" style="color: #666666 !important;">
-					Other personal information to search for and redact from the .har file.
+					Enter other sensitive information to search for and redact from the .har file. Separate each piece of data with a space.
 					</small>
 				</div>
 			</div>
